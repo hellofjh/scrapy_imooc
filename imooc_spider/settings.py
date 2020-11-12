@@ -44,15 +44,18 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'imooc_spider.middlewares.ImoocSpiderSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'imooc_spider.middlewares.imoocSpiderMiddleware': 300,
+   # 'imooc_spider.middlewares.ImoocSpiderSpiderMiddleware': 543,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'imooc_spider.middlewares.ImoocSpiderDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   # 'imooc_spider.middlewares.ImoocSpiderDownloaderMiddleware': 543,
+   'imooc_spider.middlewares.makeUserAgent': 301,
+   # 'imooc_spider.middlewares.makeProxy': 300,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -65,7 +68,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
    # 'imooc_spider.pipelines.ImoocMongoDbPipeline': 300,
    'imooc_spider.pipelines.ImoocSpiderPipeline': 300,
-   'imooc_spider.pipelines.ImoocImagePipeline': 301,
+   # 'imooc_spider.pipelines.ImoocImagePipeline': 301,
 }
 IMAGES_STORE = 'public/images'
 # Enable and configure the AutoThrottle extension (disabled by default)

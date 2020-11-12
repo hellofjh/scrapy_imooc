@@ -15,7 +15,7 @@ from .spiders.imooc import ImoocSpider
 
 class ImoocSpiderPipeline:
     def process_item(self, item, spider):
-        pass
+        return item
 
 class ImoocMongoDbPipeline:
     def __init__(self):
@@ -28,8 +28,8 @@ class ImoocMongoDbPipeline:
         if isinstance(spider, ImoocSpider): # 判读imooc爬虫类
             data = dict(item)
             self._col.insert_one(data)
-        else:
-            return item
+
+        return item
 
 class ImoocImagePipeline(ImagesPipeline):
     # 根据指定数据进行爬取
